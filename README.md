@@ -42,20 +42,24 @@ pip install -r requirements.txt
 
 # Run the Flask app
 python app.py 
+- After running the Flask app, open your browser and go to:
+http://127.0.0.1:5000/
+
+That’s all you need — *nothing more, nothing less.*
 
 # 🖥 Project Files
-●app.py              # Flask app
-●iris_model.py       # Model training code
-●templates/index.html
-●models/             # Contains .pkl and .json models
+- App.py              # Flask app
+- Iris_model.py       # Model training code
+- Templates/index.html
+- Models/             # Contains .pkl and .json models
 
 # 📦 OutPut
 predicts one of:
-●iris setosa
-●iris versicolor
-●iris virginica
+- Iris setosa
+- Iris versicolor
+- Iris virginica
 
 # 👩‍💻 Author
-●JYOTHSNA
-●Data Analyst Student at Vihartech
-●Github:@jo2507
+- JYOTHSNA VARDHANAPU
+- Data Analyst Student at Vihartech
+- Github:@jo2507
