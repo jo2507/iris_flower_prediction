@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Iris Flower Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg,#a8edea,#fed6e3);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #fff;
+      width: 520px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      padding: 28px;
+      text-align: center;
+    }
+    .photo {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px; /* square with slightly rounded corners */
+      border: 2px solid #eee;
+      margin-bottom: 12px;
+    }
+    h1 { color:#1666a6; margin:6px 0 0 0; }
+    p.subtitle { color:#333; margin:6px 0 18px 0; font-weight:600;}
+    .input { width: 100%; padding: 10px 12px; margin: 8px 0; border-radius: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+    .btn { background:#1666a6; color:white; padding:10px 14px; border:none; border-radius:10px; cursor:pointer; margin-top:10px; width:100%; }
+    .result { margin-top:14px; font-weight:700; color:#0b6a30; }
+    pre.matrix { text-align:left; background:#f7f7f7; padding:10px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="{{ url_for('static', filename='jyothsna.jpg') }}" alt="Profile Photo" class="photo">
+    <h1>Jyothsna</h1>
+    <p class="subtitle">Data Analyst Student @ Vihartech</p>
+
+    <form action="/predict" method="post">
+      <input class="input" step="any" name="sepal_length" placeholder="Sepal Length (cm)" required>
+      <input class="input" step="any" name="sepal_width"  placeholder="Sepal Width (cm)" required>
+      <input class="input" step="any" name="petal_length" placeholder="Petal Length (cm)" required>
+      <input class="input" step="any" name="petal_width" placeholder="Petal Width (cm)" required>
+
+      <select class="input" name="model">
+        <option value="knn">KNN Model</option>
+        <option value="nb">Naive Bayes Model</option>
+      </select>
+
+      <button class="btn" type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+      <div class="result">🌸 Predicted Flower: {{ result }}</div>
+    {% endif %}
+
+    {% if accuracy %}
+      <div style="margin-top:12px">Model accuracy: <strong>{{ accuracy }}</strong></div>
+    {% endif %}
+
+    {% if confusion %}
+      <h4 style="margin-top:12px">Confusion Matrix</h4>
+      <pre class="matrix">{{ confusion }}</pre>
+    {% endif %}
+  </div>
+</body>
+</html>
